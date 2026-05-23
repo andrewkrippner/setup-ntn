@@ -1,0 +1,28 @@
+name: Setup Notion CLI
+description: Install the ntn (Notion) CLI and configure authentication for the workflow
+author: Andrew Krippner
+inputs:
+  tools-version:
+    description: Version of ntn to install (defaults to latest)
+    required: false
+  notion_api_token:
+    description: API token for authentication (exported as NOTION_API_TOKEN)
+    required: true
+  workspace_id:
+    description: Notion workspace to target (exported as NOTION_WORKSPACE_ID)
+    required: false
+  notion_env:
+    description: 'Notion environment: local, dev, stg, or prod (exported as NOTION_ENV)'
+    required: false
+  workers_config_file:
+    description: Path to workers.json (exported as NOTION_WORKERS_CONFIG_FILE)
+    required: false
+outputs:
+  ntn-version:
+    description: Installed ntn version
+branding:
+  icon: 'box'
+  color: 'gray-dark'
+runs:
+  using: node20
+  main: dist/setup/index.js

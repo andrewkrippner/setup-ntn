@@ -1,0 +1,60 @@
+name: Test action
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  install:
+    name: Install ntn (no real auth needed)
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run setup-ntn with a dummy token
+        id: setup
+        uses: ./
+        with:
+          notion_api_token: dummy-token-for-smoke-test
+          tools-version: 0.14.1
+          notion_env: dev
+
+      - name: Verify ntn is on PATH
+        run: ntn --version
+
+      - name: Verify env vars were exported
+        shell: bash
+        run: |
+          test -n "$NOTION_API_TOKEN" || { echo "NOTION_API_TOKEN not exported"; exit 1; }
+          test "$NOTION_KEYRING" = "0" || { echo "NOTION_KEYRING != 0"; exit 1; }
+          test "$NOTION_ENV" = "dev" || { echo "NOTION_ENV != dev"; exit 1; }
+          echo "ntn-version output: ${{ steps.setup.outputs.ntn-version }}"
+
+  build:
+    name: Build is up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - name: Fail if dist/ drifted from source
+        run: |
+          if [ -n "$(git status --porcelain dist/)" ]; then
+            echo "dist/ is out of date. Run 'npm run build' and commit the result."
+            git status --porcelain dist/
+            git diff dist/
+            exit 1
+          fi
