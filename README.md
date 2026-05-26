@@ -34,7 +34,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - uses: akrippner/setup-ntn@v1
+      - uses: andrewkrippner/setup-ntn@v1
         with:
           notion_api_token: ${{ secrets.NOTION_API_TOKEN }}
       - run: ntn workers deploy
@@ -43,7 +43,7 @@ jobs:
 ### Pin a version and select a workspace
 
 ```yaml
-- uses: akrippner/setup-ntn@v1
+- uses: andrewkrippner/setup-ntn@v1
   with:
     tools-version: 0.14.1
     notion_api_token: ${{ secrets.NOTION_API_TOKEN }}
