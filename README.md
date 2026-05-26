@@ -10,7 +10,6 @@ Inspired by [`w9jds/setup-firebase`](https://github.com/w9jds/setup-firebase).
 - Exports `NOTION_API_TOKEN` from a secret so subsequent `ntn` steps are authenticated
 - Sets `NOTION_KEYRING=0` so the CLI uses file-based auth instead of trying to reach a non-existent OS keychain on the runner
 - Optionally exports `NOTION_WORKSPACE_ID`, `NOTION_ENV`, and `NOTION_WORKERS_CONFIG_FILE`
-- Optionally changes the working directory before subsequent steps
 - Prints `node` and `ntn` versions, and sets an `ntn-version` output
 
 It does **not** run `ntn workers deploy` for you — that goes in your own `run:` step, the same way `setup-firebase` leaves `firebase deploy` to the caller.
