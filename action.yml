@@ -6,7 +6,7 @@ inputs:
     description: Version of ntn to install (defaults to latest)
     required: false
   notion_api_token:
-    description: API token for authentication (exported as NOTION_API_TOKEN)
+    description: Notion credential to authenticate ntn — pass a personal access token (recommended) or an integration token. Exported as NOTION_API_TOKEN, which is the env var the ntn CLI reads.
     required: true
   workspace_id:
     description: Notion workspace to target (exported as NOTION_WORKSPACE_ID)

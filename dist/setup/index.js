@@ -25830,7 +25830,7 @@ const login = async () => {
     if (!token) {
         throw new Error("notion_api_token is required to authenticate ntn");
     }
-    (0, core_1.info)("Exporting NOTION_API_TOKEN for use by the CLI");
+    (0, core_1.info)("Exporting NOTION_API_TOKEN for the ntn CLI");
     (0, core_1.exportVariable)("NOTION_API_TOKEN", token);
     (0, core_1.info)("Setting NOTION_KEYRING=0 so ntn uses file-based auth (no OS keychain on CI)");
     (0, core_1.exportVariable)("NOTION_KEYRING", "0");
