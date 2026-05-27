@@ -16,7 +16,7 @@ export const login = async () => {
     );
   }
 
-  info("Exporting NOTION_API_TOKEN for use by the CLI");
+  info("Exporting NOTION_API_TOKEN for the ntn CLI");
   exportVariable("NOTION_API_TOKEN", token);
 
   info("Setting NOTION_KEYRING=0 so ntn uses file-based auth (no OS keychain on CI)");
