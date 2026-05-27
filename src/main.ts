@@ -10,9 +10,9 @@ import {
 } from "@actions/core";
 import { getExecOutput } from "@actions/exec";
 
-import { login } from "./auth";
-import { install } from "./installer";
-import { setupProject } from "./project";
+import { login } from "./auth.js";
+import { install } from "./installer.js";
+import { setupProject } from "./project.js";
 
 export const run = async () => {
   const token = getInput("notion_api_token");
