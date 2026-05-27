@@ -1,4 +1,4 @@
-# Agents.MD
+# AGENTS.md
 
 GitHub Action that installs the `ntn` (Notion) CLI and configures auth.
 
