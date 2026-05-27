@@ -2,8 +2,6 @@
 
 GitHub Action that installs the [ntn (Notion) CLI](https://www.npmjs.com/package/ntn) and wires up authentication so your workflow can deploy and manage Notion Workers from CI/CD. Pass a Notion [personal access token](https://developers.notion.com/guides/get-started/personal-access-tokens) (recommended) or integration token as a secret.
 
-Inspired by [`w9jds/setup-firebase`](https://github.com/w9jds/setup-firebase).
-
 ## What this action does
 
 - Installs `ntn` (latest, or the version you specify) via `npm install -g`
