@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "setup": "bash -lc './worktree-setup.sh'",
+        "archive": "bash -lc './worktree-archive.sh'"
+    }
+}
