@@ -27,10 +27,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
       - uses: andrewkrippner/setup-ntn@v1
         with:
           notion_api_token: ${{ secrets.NOTION_PAT }}

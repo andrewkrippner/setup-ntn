@@ -1,10 +1,5 @@
 import { sync as commandExists } from "command-exists";
-import {
-  getInput,
-  debug,
-  startGroup,
-  endGroup,
-} from "@actions/core";
+import { getInput, debug, startGroup, endGroup } from "@actions/core";
 import { exec } from "@actions/exec";
 
 export const install = async () => {
@@ -14,7 +9,7 @@ export const install = async () => {
 
   if (!commandExists("npm")) {
     throw new Error(
-      "npm is required to install ntn. Did you forget to add actions/setup-node before this step?"
+      "npm is required to install ntn. Did you forget to add actions/setup-node before this step?",
     );
   }
 
